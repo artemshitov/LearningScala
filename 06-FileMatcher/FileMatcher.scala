@@ -14,11 +14,15 @@ object FileMatcher {
   def filesRegex(query: String) =
     filesMatching(_.matches(query))
 
+  def printFileList(list: Array[java.io.File]) {
+    list foreach println _
+  }
+
   def main(args: Array[String]) {
     if (args.length == 2) args(0) match {
-      case "ending" => filesEnding(args(1)) foreach println _
-      case "containing" => filesContaining(args(1)) foreach println _
-      case "regex" => filesRegex(args(1)) foreach println _
+      case "ending" => printFileList(filesEnding(args(1)))
+      case "containing" => printFileList(filesContaining(args(1)))
+      case "regex" => printFileList(filesRegex(args(1)))
       case _ => println("No valid arguments found")
     }
   }
