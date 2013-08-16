@@ -36,4 +36,8 @@ class WordSuite extends FunSuite {
       )
     )
   }
+
+  test("words starting with capitals") {
+    testWords(Map("Home" -> "Omehay", "Jake" -> "Akejay"))
+  }
 }
