@@ -12,9 +12,6 @@ class Word(original: String) {
       case _ => (body ::: prefix).mkString + "ay"
     }
 
-    if (original(0).isUpper)
-      res.capitalize
-    else
-      res
+    if (original(0).isUpper) res.capitalize else res
   }
 }
