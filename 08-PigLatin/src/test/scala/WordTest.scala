@@ -31,7 +31,8 @@ class WordSuite extends FunSuite {
     testWords(
       Map(
         "yellow" -> "ellowyay",
-        "rhythm" -> "ythmrhay"
+        "rhythm" -> "ythmrhay",
+        "ytterbium" -> "ytterbiumway"
       )
     )
   }

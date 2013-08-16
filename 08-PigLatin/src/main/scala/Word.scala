@@ -1,15 +1,14 @@
 package ru.artemshitov.pig_latin
 
 class Word(original: String) {
+  val vowels = "aeouiy"
+
   def toPigLatin: String = {
-    if (original.startsWith("y"))
-      new Word(original.drop(1) + "y").toPigLatin
-    else {
-      val (prefix, body) = original.toList.span(!"aeouiy".contains(_))
-      prefix match {
-        case Nil => body.mkString + "way"
-        case _   => body.mkString + prefix.mkString + "ay"
-      }
+    val (prefix, body) = original.toList.span(!vowels.contains(_))
+    (prefix, body) match {
+      case (Nil, 'y' :: x :: xs) if vowels.contains(x) => (x :: xs).mkString + "yay"
+      case (Nil, _) => body.mkString + "way"
+      case _ => (body ::: prefix).mkString + "ay"
     }
   }
 }
