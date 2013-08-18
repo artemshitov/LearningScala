@@ -5,16 +5,16 @@ import ru.artemshitov.wordcounter.Preamble._
 class WordCounterSuite extends FunSuite {
   val s =
     """
-    | One two three four five six seven eight nine ten
-    | One two three four five six seven eight nine
-    | One two three four five six seven eight
-    | One two three four five six seven
-    | One two three four five six
-    | One two three four five
-    | One two three four
-    | One two three
-    | One two
-    | One
+    |One two three-four five six seven eight nine ten
+    |One two three four five six seven eight nine
+    |One two,three four five six seven eight
+    |One two three four five six seven
+    |One two (three) four five six
+    |One two three four five
+    |One two three four
+    |One two three
+    |One two
+    |One
     """.stripMargin
 
   val top5 = List(
@@ -30,6 +30,6 @@ class WordCounterSuite extends FunSuite {
   }
 
   test ("finds arbitrary number of top words in a string") {
-    expectResult(top5 take 3) { s.top(3)}
+    expectResult(top5 take 3) { s.top(3) }
   }
 }
