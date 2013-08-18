@@ -1,6 +1,6 @@
 package ru.artemshitov.wordcounter
 
-class Words(s: String) {
+class WordCounter(s: String) {
   val words = s.toLowerCase.split("[,. ?!:;()\n]+").toList
   val counts =
     (Map[String, Int]() /: words) { (a, e) =>
@@ -11,6 +11,10 @@ class Words(s: String) {
     }.toList.sortBy(_._2).reverse
 
 
-  def top(size: Int = 5): List[Tuple2[String, Int]] =
+  def top(size: Int = 5): List[(String, Int)] =
     counts.take(size)
+}
+
+object WordCounter {
+  implicit def stringToWordCounter(s: String) = new WordCounter(s)
 }

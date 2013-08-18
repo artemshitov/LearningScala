@@ -1,0 +1,35 @@
+import org.scalatest.FunSuite
+import ru.artemshitov.wordcounter._
+import ru.artemshitov.wordcounter.WordCounter.stringToWordCounter
+
+class WordCounterSuite extends FunSuite {
+  val s =
+    """
+    | One two three four five six seven eight nine ten
+    | One two three four five six seven eight nine
+    | One two three four five six seven eight
+    | One two three four five six seven
+    | One two three four five six
+    | One two three four five
+    | One two three four
+    | One two three
+    | One two
+    | One
+    """.stripMargin
+
+  val top5 = List(
+    ("one", 10),
+    ("two", 9),
+    ("three", 8),
+    ("four", 7),
+    ("five", 6)
+  )
+
+  test ("finds top 5 words in a string") {
+    expectResult(top5) { s.top() }
+  }
+
+  test ("finds arbitrary number of top words in a string") {
+    expectResult(top5 take 3) { s.top(3)}
+  }
+}
