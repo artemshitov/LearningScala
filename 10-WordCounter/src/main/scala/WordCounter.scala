@@ -13,4 +13,17 @@ class WordCounter(s: String) {
 
   def top(size: Int = 5): List[(String, Int)] =
     counts.take(size)
+
+  def uniqueWords =
+    words.toSet
+}
+
+object WordCounter {
+  def main(args: Array[String]) {
+    val counter = new WordCounter(args.mkString(" "))
+    val counts  = counter.top(counter.uniqueWords.size)
+    val output  = counts.map { x => x._1 + ": " + x._2 }
+
+    println(output.mkString("\n"))
+  }
 }
