@@ -3,19 +3,16 @@ import ru.artemshitov.wordcounter.WordCounter
 import ru.artemshitov.wordcounter.Preamble._
 
 class WordCounterSuite extends FunSuite {
-  val s =
-    """
-    |One two three-four five six seven eight nine ten
-    |One two three four five six seven eight nine
-    |One two,three four five six seven eight
-    |One two three four five six seven
-    |One two (three) four five six
-    |One two three four five
-    |One two three four
-    |One two three
-    |One two
-    |One
-    """.stripMargin
+  val s = """One two three-four five six seven eight nine ten
+            |One two three four five six seven eight nine
+            |One two,three four five six seven eight
+            |One two three four five six seven
+            |One two (three) four five six
+            |One two three four five
+            |One two three four
+            |One two three
+            |One two
+            |One""".stripMargin
 
   val top = List(
     ("one", 10),
