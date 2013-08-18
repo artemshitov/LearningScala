@@ -4,8 +4,8 @@ class WordCounter(s: String) {
   private[this] val words = s.toLowerCase.split("\\W+")
 
   private[this] val counts =
-    (Map[String, Int]() /: words) { (a, e) =>
-      a + (e -> (a.getOrElse(e, 0) + 1))
+    (Map[String, Int]() /: words) {
+      (a, e) => a + (e -> (a.getOrElse(e, 0) + 1))
     }.toList.sortWith(_._2 > _._2)
 
   private[this] lazy val uniqueWords = words.toSet
