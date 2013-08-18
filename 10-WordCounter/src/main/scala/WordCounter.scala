@@ -10,12 +10,8 @@ class WordCounter(s: String) {
         a + (e -> 1)
     }.toList.sortBy(_._2).reverse
 
-
-  def top(size: Int = 5): List[(String, Int)] =
-    counts.take(size)
-
-  def uniqueWords =
-    words.toSet
+  def top(size: Int = 5) = counts.take(size)
+  def uniqueWords = words.toSet
 }
 
 object WordCounter {
