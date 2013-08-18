@@ -1,7 +1,7 @@
 package ru.artemshitov.wordcounter
 
 class WordCounter(s: String) {
-  val words = s.toLowerCase.split("[,. ?!:;()\n]+").toList
+  val words = s.toLowerCase.split("[,. ?!:;()\n-]+").toList
   val counts =
     (Map[String, Int]() /: words) { (a, e) =>
       if (a.isDefinedAt(e))
