@@ -1,8 +1,8 @@
 package ru.artemshitov.wordcounter
 
 class WordCounter(s: String) {
-  val words = s.toLowerCase.split("[,. ?!:;()\n-]+").toList
-  val counts =
+  private[this] val words = s.toLowerCase.split("[,. ?!:;()\n-]+").toList
+  private[this] val counts =
     (Map[String, Int]() /: words) { (a, e) =>
       if (a.isDefinedAt(e))
         a + (e -> (a(e) + 1))
