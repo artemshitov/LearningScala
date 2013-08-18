@@ -17,15 +17,24 @@ class WordCounterSuite extends FunSuite {
     |One
     """.stripMargin
 
-  val top5 = List(
+  val top = List(
     ("one", 10),
     ("two", 9),
     ("three", 8),
     ("four", 7),
-    ("five", 6)
+    ("five", 6),
+    ("six", 5),
+    ("seven", 4),
+    ("eight", 3),
+    ("nine", 2),
+    ("ten", 1)
   )
 
+  test("finds all words' counts") {
+    expectResult(top) { s.top() }
+  }
+
   test ("finds top 5 words in a string") {
-    expectResult(top5) { s.top(5) }
+    expectResult(top take 5) { s.top(5) }
   }
 }
