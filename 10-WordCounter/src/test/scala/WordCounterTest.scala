@@ -26,10 +26,6 @@ class WordCounterSuite extends FunSuite {
   )
 
   test ("finds top 5 words in a string") {
-    expectResult(top5) { s.top() }
-  }
-
-  test ("finds arbitrary number of top words in a string") {
-    expectResult(top5 take 3) { s.top(3) }
+    expectResult(top5) { s.top(5) }
   }
 }
