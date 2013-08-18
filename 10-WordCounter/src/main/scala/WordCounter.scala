@@ -14,7 +14,3 @@ class WordCounter(s: String) {
   def top(size: Int = 5): List[(String, Int)] =
     counts.take(size)
 }
-
-object WordCounter {
-  implicit def stringToWordCounter(s: String) = new WordCounter(s)
-}

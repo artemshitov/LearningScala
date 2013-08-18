@@ -1,6 +1,6 @@
 import org.scalatest.FunSuite
-import ru.artemshitov.wordcounter._
-import ru.artemshitov.wordcounter.WordCounter.stringToWordCounter
+import ru.artemshitov.wordcounter.WordCounter
+import ru.artemshitov.wordcounter.Preamble._
 
 class WordCounterSuite extends FunSuite {
   val s =
