@@ -4,10 +4,7 @@ class WordCounter(s: String) {
   private[this] val words = s.toLowerCase.split("[,. ?!:;()\n-]+").toList
   private[this] val counts =
     (Map[String, Int]() /: words) { (a, e) =>
-      if (a.isDefinedAt(e))
-        a + (e -> (a(e) + 1))
-      else
-        a + (e -> 1)
+      a + (e -> (a.getOrElse(e, 0) + 1))
     }.toList.sortBy(_._2).reverse
 
   def top(size: Int) = counts.take(size)
