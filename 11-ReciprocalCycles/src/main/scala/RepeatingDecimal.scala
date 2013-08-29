@@ -1,18 +1,24 @@
 package ru.artemshitov.reciprocalcycles
 
+import scala.collection.mutable.ListBuffer
+
 class RepeatingDecimal(val num: Int, val denom: Int) {
   val int = num / denom
   val (base, period) = {
-    def divide(i: Int, rems: List[Int], quots: List[Int]): (String, String) = i match {
-      case 0 => (quots.reverse.mkString, "")
-      case x if rems.contains(x) => {
-        val (base, period) = rems.zip(quots).reverse.span(_._1 != x)
-        (base.unzip._2.mkString, period.unzip._2.mkString)
+    def divide(i: Int, remainders: ListBuffer[Int]): (String, String) = i match {
+      case 0 => (quotientsFromRemainders(remainders), "")
+      case x if remainders.contains(x) => {
+        val (baseRems, periodRems) = remainders.span(_ != x)
+        (quotientsFromRemainders(baseRems), quotientsFromRemainders(periodRems))
       }
-      case _ => divide((i % denom) * 10, i :: rems, (i / denom) :: quots)
+      case _ => divide((i % denom) * 10, remainders += i)
     }
 
-    divide(num % denom * 10, Nil, Nil)
+    def quotientsFromRemainders(rems: ListBuffer[Int]) = {
+      rems.map(_ / denom).mkString
+    }
+
+    divide(num % denom * 10, ListBuffer[Int]())
   }
 
   override def toString: String = (int, base, period) match {
