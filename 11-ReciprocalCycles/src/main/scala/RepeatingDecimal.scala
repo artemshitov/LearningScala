@@ -9,7 +9,6 @@ class RepeatingDecimal(val num: Int, val denom: Int) {
         val (base, period) = rems.zip(quots).reverse.span(_._1 != x)
         (base.unzip._2.mkString, period.unzip._2.mkString)
       }
-      case x if x < denom => divide(x * 10, x :: rems, 0 :: quots)
       case _ => divide((i % denom) * 10, i :: rems, (i / denom) :: quots)
     }
 
