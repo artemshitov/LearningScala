@@ -6,15 +6,15 @@ class RepeatingDecimal(val num: Int, val denom: Int) {
   val int = num / denom
   val (base, period) = {
     def divide(i: Int, remainders: ListBuffer[Int]): (String, String) = i match {
-      case 0 => (quotientsFromRemainders(remainders), "")
+      case 0 => (quotientsFrom(remainders), "")
       case x if remainders.contains(x) => {
         val (baseRems, periodRems) = remainders.span(_ != x)
-        (quotientsFromRemainders(baseRems), quotientsFromRemainders(periodRems))
+        (quotientsFrom(baseRems), quotientsFrom(periodRems))
       }
       case _ => divide((i % denom) * 10, remainders += i)
     }
 
-    def quotientsFromRemainders(rems: ListBuffer[Int]) = {
+    def quotientsFrom(rems: ListBuffer[Int]) = {
       rems.map(_ / denom).mkString
     }
 
